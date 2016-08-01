@@ -1,0 +1,45 @@
+#!/bin/bash
+#
+# docked-mode-toggle
+#
+# Switch i3 desktop between docked and undocked mode.
+#
+# Copyright (C) 2015, 2016 Gabriel Szasz <gabriel.szasz1@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+dock_dvi=$(xrandr -q | grep 'DP-1-2' | cut -d ' ' -f 2)
+dock_vga=$(xrandr -q | grep 'DP-1-3' | cut -d ' ' -f 2)
+
+
+if [[ $dock_dvi == "connected" && $dock_vga == "disconnected" ]]; then
+    xrandr --output DP-1-2 --right-of eDP-0 --auto
+    i3-msg -q 'workspace2; move workspace to output DP-1-2'
+    i3-msg -q 'workspace3; move workspace to output DP-1-2'
+    notify-send -u low "Docked Mode" "ON"
+elif [[ $dock_dvi == "disconnected" && $dock_vga == "connected" ]]; then
+    xrandr --output DP-1-3 --right-of eDP-0 --auto
+    i3-msg -q 'workspace2; move workspace to output DP-1-3'
+    i3-msg -q 'workspace3; move workspace to output DP-1-3'
+    notify-send -u low "Docked Mode" "ON"
+elif [[ $dock_dvi == "connected" && $dock_vga == "connected" ]]; then
+    xrandr --output DP-1-2 --right-of eDP-0 --auto --output DP-1-3 --right-of DP-1-2 --auto
+    i3-msg -q 'workspace2; move workspace to output DP-1-2'
+    i3-msg -q 'workspace3; move workspace to output DP-1-3'
+    notify-send -u low "Docked Mode" "ON"
+else
+    xrandr --output DP-1-2 --off --output DP-1-3 --off
+    notify-send -u low "Docked Mode" "OFF $dock_dvi"
+fi
