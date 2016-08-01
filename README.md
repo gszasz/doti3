@@ -5,7 +5,7 @@ The contents of repo should be cloned into the `~/.i3` directory and
 following links should be created:
 
 ```
-ln -sf ~/.i3/.i3status.conf ~/.i3status.conf
+ln -sf ~/.i3/i3status.conf ~/.config/i3status/config
 ln -sf ~/.i3/dunstrc ~/.config/dunst/dunstrc
 ln -sf ~/.i3/scripts/battery-notify ~/bin/battery-notify
 ln -sf ~/.i3/scripts/cconv ~/bin/cconv
