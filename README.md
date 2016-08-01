@@ -1,8 +1,15 @@
 My personal i3 window manager config files
 ------------------------------------------
 
-The contents of repo should be cloned into the `~/.i3` directory and
-following links should be created:
+The contents of the repo is supposed to be cloned into the `~/.i3`
+directory.
+
+
+```
+git clone git@github.com:gszasz/doti3.git ~/.i3
+```
+
+Following links should be created afterwards:
 
 ```
 ln -sf ~/.i3/i3status.conf ~/.config/i3status/config
