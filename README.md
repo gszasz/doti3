@@ -12,8 +12,6 @@ git clone git@github.com:gszasz/doti3.git ~/.i3
 Following links should be created afterwards:
 
 ```
-ln -sf ~/.i3/i3status.conf ~/.config/i3status/config
-ln -sf ~/.i3/dunstrc ~/.config/dunst/dunstrc
 ln -sf ~/.i3/scripts/battery-notify ~/bin/battery-notify
 ln -sf ~/.i3/scripts/cconv ~/bin/cconv
 ln -sf ~/.i3/scripts/docked-mode-toggle ~/bin/docked-mode-toggle
