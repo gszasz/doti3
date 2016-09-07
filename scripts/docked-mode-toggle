@@ -37,7 +37,7 @@ elif [[ $dock_dp1 == "connected" && $dock_dp2 == "connected" ]]; then
     i3-msg -q 'workspace2; move workspace to output DP-1-2'
     i3-msg -q 'workspace3; move workspace to output DP-1-1'
     pkill dunst
-    dunst -config ~/.config/dunst/dunstrc -mon 2 &
+    dunst -config ~/.i3/dunstrc -mon 2 &
     notify-send -u low "Docked Mode" "ON"
 # Guest docking staton, single screen connected to DP-1 (first DisplayPort or HDMI)
 elif [[ $dock_dp1 == "connected" && $dock_dvi == "disconnected" && $dock_dp3 == "disconnected" ]]; then
