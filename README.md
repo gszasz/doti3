@@ -31,6 +31,15 @@ DISPLAY=:0
 */5 * * * *   battery-notify
 ```
 
+The following entry should be added to the /etc/lightdm/lightdm.conf:
+
+```
+[SeatDefaults]
+...
+display-setup-script=/home/gszasz/.i3/scripts/set-screen-layout
+...
+```
+
 Scripts
 -------
 * `battery-notify` - Send alert message when battery is low.
@@ -38,6 +47,7 @@ Scripts
 * `docked-mode-toggle` - Switch i3 desktop between docked and undocked mode.
 * `i3-get-window-criteria` - Get criteria for use with i3 config commands.
 * `presentation-mode-toggle` - Switch i3 desktop to presentation mode.
+* `set-screen-layout` - Initial screen settings for LightDM.
 
 
 Credits
