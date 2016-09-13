@@ -19,7 +19,7 @@
 
     transparency = 0
     idle_threshold = 120
-    monitor = 1
+    monitor = 0
 
     follow = none
     sticky_history = yes
