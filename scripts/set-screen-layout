@@ -24,19 +24,34 @@
 dock_dp1=$(xrandr -q | grep 'DP-1-1' | cut -d ' ' -f 2)
 # Dock DisplayPort 2 (coupled with dual-link DVI output)
 dock_dp2=$(xrandr -q | grep 'DP-1-2' | cut -d ' ' -f 2)
-# Dock DisplayPort 3 (converted to analog VGA output)
-dock_dp3=$(xrandr -q | grep 'DP-1-3' | cut -d ' ' -f 2)
+# Dock VGA port (internal DisplayPort 3 converted into analog VGA output)
+dock_vga=$(xrandr -q | grep 'DP-1-3' | cut -d ' ' -f 2)
+# Laptop Mini DisplayPort
+minidp=$(xrandr -q | grep 'DP-0' | cut -d ' ' -f 2)
+# Laptop Mini DisplayPort + HDMI adaptor
+minidp_hdmi=$(xrandr -q | grep 'HDMI-0' | cut -d ' ' -f 2)
+# Laptop VGA port (internal DisplayPort 1 converted into analog VGA output)
+vga=$(xrandr -q | grep 'DP-1' | cut -d ' ' -f 2)
 
-# # My docking station, two screens - first connected to DP-2 (DVI) and second to DP-1 (DisplayPort)
-if [[ $dock_dp1 == "connected" && $dock_dp2 == "connected" ]]; then
+# No docking station
+if [[ $dock_dp1 == "disconnected" && $dock_dp2 == "disconnected" && $dock_vga == "disconnected" ]]; then
+    if [[ $minidp == "connected" ]]; then
+        xrandr --output DP-0 --right-of eDP-0 --auto --primary
+    elif [[ $minidp_hdmi == "connected" ]]; then
+        xrandr --output HDMI-0 --right-of eDP-0 --auto --primary
+    elif [[ $vga == "connected" ]]; then
+        xrandr --output DP-1 --right-of eDP-0 --auto --primary
+    fi
+# My docking station, two screens - first connected to DP-2 (DVI) and second to DP-1 (DisplayPort)
+elif [[ $dock_dp1 == "connected" && $dock_dp2 == "connected" ]]; then
     xrandr --output DP-1-2 --right-of eDP-0 --auto --primary  --output DP-1-1 --right-of DP-1-2 --auto
-# Guest docking staton, single screen connected to DP-1 (first DisplayPort or HDMI)
-elif [[ $dock_dp1 == "connected" && $dock_dvi == "disconnected" && $dock_dp3 == "disconnected" ]]; then
+# Guest docking station, single screen connected to DP-1 (first DisplayPort or HDMI)
+elif [[ $dock_dp1 == "connected" && $dock_dvi == "disconnected" && $dock_vga == "disconnected" ]]; then
     xrandr --output DP-1-1 --right-of eDP-0 --auto --primary
-# Guest docking staton, single screen connected to DP-2 (second DisplayPort or DVI)
-elif [[ $dock_dp1 == "disconnected" && $dock_dp2 == "connected" && $dock_dp3 == "disconnected" ]]; then
+# Guest docking station, single screen connected to DP-2 (second DisplayPort or DVI)
+elif [[ $dock_dp1 == "disconnected" && $dock_dp2 == "connected" && $dock_vga == "disconnected" ]]; then
     xrandr --output DP-1-2 --right-of eDP-0 --auto --primary
-# Guest docking staton, single screen connected to DP-3 (VGA)
-elif [[ $dock_dp1 == "disconnected" && $dock_dp2 == "disconnected" && $dock_dp3 == "connected" ]]; then
+# Guest docking station, single screen connected to VGA port
+elif [[ $dock_dp1 == "disconnected" && $dock_dp2 == "disconnected" && $dock_vga == "connected" ]]; then
     xrandr --output DP-1-3 --right-of eDP-0 --auto --primary
 fi
