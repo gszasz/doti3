@@ -48,6 +48,7 @@ Scripts
 * `i3-get-window-criteria` - Get criteria for use with i3 config commands.
 * `presentation-mode-toggle` - Switch i3 desktop to presentation mode.
 * `set-screen-layout` - Initial screen settings for LightDM.
+* `set-i3-layout` - Distribute workspaces over multiple screens.
 
 
 Credits

@@ -247,8 +247,8 @@ exec --no-startup-id dunst -config ~/.i3/dunstrc
 exec --no-startup-id urxvt256cd -q -f -o
 exec --no-startup-id emacs --daemon
 
-# Set proper screen and workspace layout
-exec --no-startup-id docked-mode-toggle
+# Set proper workspace layout
+exec --no-startup-id set-i3-layout
 
 # Start Docked apps
 exec --no-startup-id nm-applet
