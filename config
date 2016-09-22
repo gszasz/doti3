@@ -195,9 +195,6 @@ for_window [class="^URxvt$"] border pixel 1
 for_window [class="^Emacs$"] border pixel 1
 for_window [class="^Firefox$" instance="^Navigator$"] border pixel 1
 
-# Enable floating for Pidgin
-for_window [class="^Pidgin$"] floating enable
-
 # Enable floating for Linphone
 for_window [class="^Linphone$"] floating enable
 
@@ -228,7 +225,6 @@ bindsym $mod+m exec "pgrep emacsclient && i3-msg 'workspace 3' || i3-msg 'worksp
 bindsym $mod+p exec "pgrep cmus && i3-msg 'workspace 4' || i3-msg 'workspace 4; exec urxvt256c -e cmus'"
 
 # Other launcher keybindings
-bindsym $mod+c exec gnome-calculator
 bindsym $mod+n exec nautilus
 bindsym $mod+g exec gimp
 
