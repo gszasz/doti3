@@ -1,8 +1,6 @@
 #!/bin/bash
 #
-# set-screen-layout
-#
-# Set proper screen layout on LightDM startup
+# set-screen-layout - Set proper screen layout on LightDM startup
 #
 # Copyright (C) 2016 Gabriel Szasz <gabriel.szasz1@gmail.com>
 #

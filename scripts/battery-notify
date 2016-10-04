@@ -1,8 +1,6 @@
 #!/bin/bash
 #
-# battery-notify
-#
-# Send alert message when battery is low.
+# battery-notify - Send alert message when battery is low
 #
 # Copyright (C) 2015, 2016 Gabriel Szasz <gabriel.szasz1@gmail.com>
 #

@@ -1,8 +1,6 @@
 #!/bin/bash
 #
-# presentation-mode
-#
-# Switch i3 desktop to presentation mode.
+# presentation-mode - Switch i3 desktop to presentation mode
 #
 # Copyright (C) 2015, 2016 Gabriel Szasz <gabriel.szasz1@gmail.com>
 #

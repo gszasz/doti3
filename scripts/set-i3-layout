@@ -1,8 +1,6 @@
 #!/bin/bash
 #
-# set-i3-layout
-#
-# Set proper workspace layout for i3 desktop
+# set-i3-layout - Set proper workspace layout for i3 desktop
 #
 # Copyright (C) 2015, 2016 Gabriel Szasz <gabriel.szasz1@gmail.com>
 #

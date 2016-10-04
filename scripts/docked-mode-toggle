@@ -1,8 +1,6 @@
 #!/bin/bash
 #
-# docked-mode-toggle
-#
-# Switch i3 desktop between docked and undocked mode.
+# docked-mode-toggle - Switch i3 desktop between docked and undocked mode
 #
 # Copyright (C) 2015, 2016 Gabriel Szasz <gabriel.szasz1@gmail.com>
 #
