@@ -24,7 +24,7 @@ font pango:DejaVu Sans Mono 8
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod 
+floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -214,6 +214,9 @@ exec --no-startup-id feh --bg-scale ~/Pictures/nova-centauri-wallpaper.jpg
 
 # Keybinding for launching IRC
 bindsym $mod+i exec "pgrep weechat-curses && i3-msg 'workspace 1' || i3-msg 'workspace 1; exec urxvt256c -e weechat-curses'"
+
+# Keybinding for launching mail client
+bindsym $mod+t exec "pgrep thunderbird && i3-msg 'workspace 2' || i3-msg -q 'workspace 2; exec thunderbird'"
 
 # Keybinding for launching browser
 bindsym $mod+b exec "pgrep firefox && i3-msg 'workspace 2' || i3-msg -q 'workspace 2; exec firefox'"
