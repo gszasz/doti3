@@ -18,6 +18,20 @@
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+# Note that DBUS_SESSION_BUS_ADDRESS variable is not set if this script is
+# executed by cron.  This variable has to be set explicitly, otherwise
+# 'notify-send' is not able to communicate with running dunst daemon and it will
+# instantiate another dunst instance running in separate D-Bus session.  This
+# issue is normally being resolved by sourcing D-Bus session environment file
+# '~/.dbus/session-bus/{session-id}-{display}' and exporting sourced variables.
+# Nevertheless, this address does not match actual address used by i3 processes
+# and dunst.  I workaround this issue by getting the correct value directly from
+# the 'i3' process environment.
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    i3_pid=$(pgrep -u $USER i3 | head -1)
+    export DBUS_SESSION_BUS_ADDRESS=$(awk -F 'S=' -v RS='\0' '/DBUS_SESSION_BUS_ADDRESS/ { print $2 }' /proc/${i3_pid}/environ)
+fi
+
 battery_status="$(acpi -b | grep --color=never "Discharging")"
 
 if [[ -n $battery_status ]]; then 
