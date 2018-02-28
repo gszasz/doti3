@@ -2,7 +2,7 @@
 #
 # cconv - An ultimate currency convertor
 #
-# Copyright (C) 2015, 2016 Gabriel Szasz <gabriel.szasz1@gmail.com>
+# Copyright (C) 2015, 2016, 2018 Gabriel Szasz <gabriel.szasz1@gmail.com>
 #
 # Derived from the "Simple Bash Currency Converter" blog post published at
 # "Productivity Sauce" blog by Dmitri Popov on Mar 14, 2013. See
@@ -23,7 +23,7 @@
 #
 
 if [[ $# == 3 ]]; then
-    wget -qO- "http://www.google.com/finance/converter?a=${1^^}&from=$2&to=${3^^}" |  sed '/res/!d;s/<[^>]*>//g';
+    wget -qO- "https://www.google.com/finance/converter?a=${1^^}&from=$2&to=${3^^}" |  sed '/res/!d;s/<[^>]*>//g';
 else
     echo "USAGE: cconv <AMOUNT> <SRC_CURRENCY> <DEST_CURRENCY>"
 fi
